@@ -11,5 +11,4 @@ end
 
 task :rubocop do
   sh 'rubocop'
-  sh 'htmlproofer test'
 end
