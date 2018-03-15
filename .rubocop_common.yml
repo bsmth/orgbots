@@ -1,0 +1,13 @@
+##############
+# Global rules
+#
+# This file is meant to be shared across all projects belonging to a specific team.
+# Check this file in to a dedicated repo, and link to it .rubosync.yml config file.
+# Evolve it over time and use rubocop-rules update to apply it.
+#
+
+# Example:
+# ========
+# AllCops:
+#   Exclude:
+#     - db/**/*
