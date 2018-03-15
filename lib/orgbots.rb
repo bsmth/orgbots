@@ -1,5 +1,5 @@
-require "orgbots/version"
+require 'orgbots/version'
 
 module Orgbots
-  # Your code goes here...
+  puts 'Hay'
 end
