@@ -18,6 +18,8 @@ REPO=someuseraccount/testrepo
 
 To retrieve the access token, navigate to https://github.com/settings/tokens in the github account that will be making commits and generate a new token.
 
+## Committing using orgbot
+
 ```bash
 rake commit
 ```
