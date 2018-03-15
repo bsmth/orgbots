@@ -5,7 +5,7 @@ RSpec::Core::RakeTask.new(:spec)
 
 task default: :spec
 
-task :hi do
+task :commit do
   ruby 'lib/orgbots.rb'
 end
 
