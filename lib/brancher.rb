@@ -1,21 +1,30 @@
 require 'octokit'
-require 'digest'
 
-# Creates an Orgbot, commits to a given branch
+# Creates a branch in given repo
 class BranchBot
   def initialize(r, b, t)
+    Octokit.auto_paginate = true
     @c = Octokit::Client.new(access_token: t)
-    @repo = @c.repo r
+    @repo = r
     @branch = b
     @ref = "heads/#{@branch}"
+    @repo_branches = @c.branches(@repo).collect { |br| br[:name] }
   end
 
-  def branch
-    sha = '827efc6d56897b048c772eb4087f854f46256132'
-    create_ref = @c.create_ref(@repo.full_name, @ref, sha)
-    # updated_ref = @c.update_ref(@repo.full_name, @ref, create_ref)
-    # satify the cops - useless variable assignment
-    puts create_ref.inspect
-    puts "BRANCHED : #{file}"
+  def create_branch
+    if @repo_branches.include?(@branch)
+      puts "Branch #{@branch} already exists in #{@repo}"
+    else
+      # branch from master?
+      ref = @c.ref(@repo, 'heads/master')
+      sha = ref[:object][:sha]
+      create_ref = @c.create_ref(@repo, 'heads/' + @branch, sha)
+      puts "Created branch #{create_ref[:ref]}"
+    end
+  end
+
+  def delete_branch
+    puts "Deleting #{@branch} from #{@repo}"
+    @c.delete_ref(@repo, 'heads/' + @branch) if @repo_branches.include?(@branch)
   end
 end
