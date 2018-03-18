@@ -6,6 +6,8 @@ require 'octokit'
 require 'dotenv/load'
 
 Dotenv.load('orgbot.env')
+r = ENV['REPO']
+t = ENV['OCTOKIT_TOKEN']
 
 # branch = 'coolbranch'
 # file = 'README.md'
@@ -13,13 +15,13 @@ Dotenv.load('orgbot.env')
 # message = 'DIRECT TO MASTER!'
 
 # Examples to create/delete branches:
-# BranchBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).create_branch
-# BranchBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).delete_branch
+# BranchBot.new(r, branch, t).create_branch
+# BranchBot.new(r, branch, t).delete_branch
 
 # Example to commit to a file:
-# CommitBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).commit(file, content, message)
+# CommitBot.new(r, branch, t).commit(file, content, message)
 
 # Example to query issues in a given repository:
-IssueBot.new(ENV['REPO'], ENV['OCTOKIT_TOKEN']).list_issues
-# IssueBot.new(ENV['REPO'], ENV['OCTOKIT_TOKEN']).create_issue('Swag','Some cool issue')
-# IssueBot.new(ENV['REPO'], ENV['OCTOKIT_TOKEN']).list_issues
+# IssueBot.new(r, t).create_issue('Swag','Some cool issue')
+IssueBot.new(r, t).list_issues
+# IssueBot.new(r, t).close_issue(2)
