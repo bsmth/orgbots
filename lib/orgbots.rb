@@ -11,7 +11,9 @@ branch = 'coolbranch'
 # content = 'COOLPIPES'
 # message = 'DIRECT TO MASTER!'
 
-BranchBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).create_branch
-sleep 30
-BranchBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).delete_branch
+# Examples to create/delete branches:
+# BranchBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).create_branch
+# BranchBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).delete_branch
+
+# Example to commit to a file:
 # CommitBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).commit(file, content, message)
