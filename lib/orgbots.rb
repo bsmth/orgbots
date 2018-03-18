@@ -23,5 +23,8 @@ t = ENV['OCTOKIT_TOKEN']
 
 # Example to query issues in a given repository:
 # IssueBot.new(r, t).create_issue('Swag','Some cool issue')
-IssueBot.new(r, t).list_issues
+# IssueBot.new(r, t).list_issues
+# IssueBot.new(r, t).open_issues
+# IssueBot.new(r, t).most_commented
+IssueBot.new(r, t).comment(1, 'Sir Swaggsalot')
 # IssueBot.new(r, t).close_issue(2)
