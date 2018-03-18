@@ -1,6 +1,7 @@
 require_relative 'orgbots/version'
 require_relative 'committer'
 require_relative 'brancher'
+require_relative 'issues'
 require 'octokit'
 require 'dotenv/load'
 
@@ -17,3 +18,8 @@ Dotenv.load('orgbot.env')
 
 # Example to commit to a file:
 # CommitBot.new(ENV['REPO'], branch, ENV['OCTOKIT_TOKEN']).commit(file, content, message)
+
+# Example to query issues in a given repository:
+IssueBot.new(ENV['REPO'], ENV['OCTOKIT_TOKEN']).list_issues
+# IssueBot.new(ENV['REPO'], ENV['OCTOKIT_TOKEN']).create_issue('Swag','Some cool issue')
+# IssueBot.new(ENV['REPO'], ENV['OCTOKIT_TOKEN']).list_issues

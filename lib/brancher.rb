@@ -3,8 +3,8 @@ require 'octokit'
 # Creates a branch in given repo
 class BranchBot
   def initialize(r, b, t)
-    Octokit.auto_paginate = true
     @c = Octokit::Client.new(access_token: t)
+    @c.auto_paginate = true
     @repo = r
     @branch = b
     @ref = "heads/#{@branch}"
