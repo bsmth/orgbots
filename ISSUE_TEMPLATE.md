@@ -8,10 +8,10 @@
 #### What is the current behaviour?
 
 
-#### If the current behavior is a bug, please provide the steps to reproduce
+#### If the current behaviour is a bug, please provide the steps to reproduce
 
 
-#### What is the expected behavior?
+#### What is the expected behaviour?
 
 
 #### Please tell us about your environment:
