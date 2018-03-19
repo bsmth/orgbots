@@ -6,10 +6,11 @@ require_relative 'issues'
 require 'octokit'
 require 'dotenv/load'
 
-Dotenv.load('orgbot.env')
-r = ENV['REPO']
-t = ENV['OCTOKIT_TOKEN']
+# Dotenv.load('orgbot.env')
+# r = ENV['REPO']
+# t = ENV['OCTOKIT_TOKEN']
 
-# BranchBot.new(r, t).create_branch('awesome_branch', 'master')
+# BranchBot.new(r, t).create_branch('cool2', 'cool')
 # CommitBot.new(r, 'awesome_branch', t).commit('README.md', 'SWAGGSALOT', 'fix typo')
-PRBot.new(r, t).open_pr('master', 'awesome_branch', 'URGENT PR', 'PLZ MARGE IT ASAP')
+# PRBot.new(r, t).open_pr('master', 'cool2', 'URGENT PR', "PLZ MARGE IT ASAP\n* 1\n* 2")
+# puts PRBot.new(r, t).open_prs
