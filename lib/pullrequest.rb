@@ -1,10 +1,6 @@
 require 'octokit'
 require 'dotenv/load'
 
-Dotenv.load('orgbot.env')
-r = ENV['REPO']
-t = ENV['OCTOKIT_TOKEN']
-
 # Queries, opens and closes Pull Requests in a given repository
 class PRBot
   def initialize(r, t)
@@ -15,9 +11,9 @@ class PRBot
 
   # get prs by open state
   def open_prs
-    @c.pull_requests(@repo, state: 'open').collect { 
-      |pr| [pr[:number], pr[:title], pr[:body]] 
-    }
+    @c.pull_requests(@repo, state: 'open').collect do |pr|
+      [pr[:number], pr[:title], pr[:body]]
+    end
   end
 
   # get comments for a specify pr
@@ -27,7 +23,7 @@ class PRBot
 
   # list comments for all prs
   def all_pr_comments
-    @c.pull_requests_comments(@repo, {:sort => 'asc', :direction => 'down'})
+    @c.pull_requests_comments(@repo, sort: 'asc', direction: 'down')
   end
 
   def create_pr(base, branch, title, body)

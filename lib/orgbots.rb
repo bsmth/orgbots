@@ -6,9 +6,9 @@ require_relative 'issues'
 require 'octokit'
 require 'dotenv/load'
 
-Dotenv.load('orgbot.env')
-r = ENV['REPO']
-t = ENV['OCTOKIT_TOKEN']
+# Dotenv.load('orgbot.env')
+# r = ENV['REPO']
+# t = ENV['OCTOKIT_TOKEN']
 
 # BranchBot.new(r, t).create_branch('cool2', 'cool')
 # CommitBot.new(r, 'awesome_branch', t).commit('README.md', 'SWAGGSALOT', 'fix typo')
