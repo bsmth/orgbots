@@ -21,6 +21,6 @@ To retrieve the access token, navigate to https://github.com/settings/tokens in 
 ## Committing using orgbot
 
 ```bash
-rake commit
+rake run
 ```
 
