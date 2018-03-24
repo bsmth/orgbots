@@ -6,7 +6,7 @@ require_relative 'pullrequest'
 require_relative 'committer'
 require_relative 'brancher'
 require_relative 'issues'
-require_relative 'blobber'
+require_relative 'files'
 
 Dotenv.load('orgbot.env')
 r = ENV['REPO']
