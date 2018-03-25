@@ -11,6 +11,7 @@ require_relative 'reacter'
 require_relative 'util'
 
 puts Util.new.ratelimit
+puts Util.new.randemoji(2)
 
 # Dotenv.load('orgbot.env')
 # r = ENV['REPO']
@@ -37,5 +38,3 @@ puts Util.new.ratelimit
 # puts Base64.decode64(file_blob.content)
 
 # PRBot.new(r, t).create_pr_comment(pr, "wow, seriously?", sha, file, position)
-
-# puts Util.new.randemoji(4)

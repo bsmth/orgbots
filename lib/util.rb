@@ -2,15 +2,17 @@ require 'octokit'
 
 # Some utilities
 class Util
-  def randemoji(number)
-    number.times { ":#{Octokit.emojis.to_a.sample[0]}:" }
+  def randemoji(multiple)
+    moji = Octokit.emojis.to_a.sample(multiple)
+    str = ''
+    moji.each { |a| str += ":#{a[0]}: " }
+    str
   end
 
   def ratelimit
     rem = Octokit.rate_limit['remaining']
-    puts "#{rem} remaining requests"
     total = seconds_to_str(Octokit.rate_limit['resets_in'].to_i)
-    puts "Rate Limit resets in #{total}" if rem.zero?
+    puts "#{rem} remaining requests, Rate Limit resets in #{total}"
   end
 
   def seconds_to_str(seconds)
