@@ -7,8 +7,14 @@ class Util
   end
 
   def ratelimit
-    # Check if rate limited, if so, show time remaining
-    reset_time = Octokit.rate_limit['resets_in']
-    puts "Rate Limit resets in #{reset_time} seonds"
+    rem = Octokit.rate_limit['remaining']
+    puts "#{rem} remaining requests"
+    total = seconds_to_str(Octokit.rate_limit['resets_in'].to_i)
+    puts "Rate Limit resets in #{total}" if rem.zero?
+  end
+
+  def seconds_to_str(seconds)
+    ["#{seconds / 3600}h", "#{seconds / 60 % 60}m", "#{seconds % 60}s"]
+      .select { |str| str =~ /[1-9]/ }.join(' ')
   end
 end

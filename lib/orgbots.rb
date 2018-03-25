@@ -14,7 +14,7 @@ puts Util.new.ratelimit
 
 # Dotenv.load('orgbot.env')
 # r = ENV['REPO']
-# t = ENV['OCTOKIT_TOKEN']
+
 # @c = Octokit::Client.new(access_token: t)
 
 # BranchBot.new(r, t).create_branch('cool2', 'cool')
