@@ -19,6 +19,12 @@ class CommitBot
     self
   end
 
+  # ex '2012-11-01'
+  def get_commits(start, endd)
+    @c.commits_between(@repo, start, endd)
+  end
+
+  # Refactor or remove
   def commit(file, content, message)
     blob_sha = @c.create_blob(@repo.full_name, Base64.encode64(content), 'base64')
     sha_new_tree = @c.create_tree(@repo.full_name,

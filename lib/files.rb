@@ -15,4 +15,13 @@ class FileBot
   def create_file(path, commit_msg, content, branch)
     @c.create_contents(@repo, path, commit_msg, content, branch: branch)
   end
+
+  # Get the contents of a file, note that ref can be a commit, branch or tag
+  def get_contents(path, ref)
+    @c.contents(@repo, path: path, ref: ref)
+  end
+
+  def update_contents(path, commit_msg, sha, content, branch)
+    @c.update_contents(@repo, path, commit_msg, sha, content, branch: branch)
+  end
 end
