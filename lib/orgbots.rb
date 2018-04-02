@@ -6,30 +6,18 @@ require_relative 'pullrequest'
 require_relative 'committer'
 require_relative 'brancher'
 require_relative 'issues'
-require_relative 'blobber'
+require_relative 'files'
+require_relative 'reacter'
+require_relative 'util'
 
 Dotenv.load('orgbot.env')
 r = ENV['REPO']
-t = ENV['OCTOKIT_TOKEN']
-@c = Octokit::Client.new(access_token: t)
+t = ENV['TOKEN']
 
-# BranchBot.new(r, t).create_branch('cool2', 'cool')
-# CommitBot.new(r, 'awesome_branch', t).commit('README.md', 'SWAGGSALOT', 'fix typo')
-# PRBot.new(r, t).open_pr('master', 'cool2', 'URGENT PR', "PLZ MARGE IT ASAP\n* 1\n* 2")
+nubranch = 'anothercoolbranch'
 
-pr = 4
-sha = PRBot.new(r, t).get_pr_commits(pr)[0][:sha]
-file = BlobBot.new(r, t).get_tree(sha)
+BranchBot.new(r, t).create_branch(nubranch, 'master')
 
-puts "you should probably comment on #{file.path} with #{file.size} lines"
-puts file.inspect
+CommitBot.new(r, nubranch, t).commit('nuwestfile.md', 'SWAGGing', 'creating swag')
 
-blob_sha = file[:sha]
-puts "blob_sha = #{blob_sha}"
-
-file_blob = @c.blob(r, blob_sha)
-puts "file_blob = #{file_blob.inspect}"
-
-puts Base64.decode64(file_blob.content)
-
-# PRBot.new(r, t).create_pr_comment(pr, "wow, seriously?", sha, file, position)
+PRBot.new(r, t).create_pr('master', nubranch, 'Another PR', "PLZ MARGE IT ASAP\n* 1\n* 2")
