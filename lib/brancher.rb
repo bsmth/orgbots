@@ -23,7 +23,7 @@ class BranchBot
   end
 
   def delete_branch(branch)
-    @c.delete_ref(@repo, 'heads/' + branch) if @repo_branches.include?(branch)
+    @c.delete_ref(@repo, 'heads/' + branch) if list_branches.include?(branch)
     puts "Deleting #{branch} from #{@repo}"
   end
 end
