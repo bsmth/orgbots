@@ -33,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'octokit', '~> 4.0'
   spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'random-word'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop'
 end

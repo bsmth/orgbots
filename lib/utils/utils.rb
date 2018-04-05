@@ -1,14 +1,13 @@
+require_relative 'pullrequest'
+require_relative 'committer'
+require_relative 'brancher'
+require_relative 'issues'
+require_relative 'files'
+require_relative 'reacter'
 require 'octokit'
 
 # Some utilities
 class Util
-  def randemoji(multiple)
-    moji = Octokit.emojis.to_a.sample(multiple)
-    str = ''
-    moji.each { |a| str += ":#{a[0]}: " }
-    str
-  end
-
   def ratelimit
     rem = Octokit.rate_limit['remaining']
     total = seconds_to_str(Octokit.rate_limit['resets_in'].to_i)

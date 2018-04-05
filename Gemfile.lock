@@ -23,6 +23,7 @@ GEM
     public_suffix (3.0.2)
     rainbow (3.0.0)
     rake (10.5.0)
+    random-word (2.1.0)
     rspec (3.7.0)
       rspec-core (~> 3.7.0)
       rspec-expectations (~> 3.7.0)
@@ -58,6 +59,7 @@ DEPENDENCIES
   octokit (~> 4.0)
   orgbots!
   rake (~> 10.0)
+  random-word
   rspec (~> 3.0)
   rubocop
 
