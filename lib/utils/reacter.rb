@@ -15,4 +15,11 @@ class ReactBot
   def issue_react(issue_id, reaction)
     @c.create_issue_reaction(@repo, issue_id, reaction)
   end
+
+  def randemoji(multiple)
+    moji = Octokit.emojis.to_a.sample(multiple)
+    str = ''
+    moji.each { |a| str += ":#{a[0]}: " }
+    str
+  end
 end

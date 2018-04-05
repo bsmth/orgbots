@@ -8,8 +8,13 @@ class FileBot
   end
 
   def get_tree(sha)
-    tree = @c.tree(@repo, sha)
-    tree.tree.first
+    tree = @c.tree(@repo, sha, recursive: true)
+    tree.tree
+  end
+
+  def list_files(branch)
+    branch_sha = @c.ref(@repo, "heads/#{branch}")[:object][:sha]
+    get_tree(branch_sha)
   end
 
   def create_file(path, commit_msg, content, branch)
