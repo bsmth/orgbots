@@ -13,15 +13,14 @@ class RandCommitter
   def commit(message)
     content = genword
     randombranch = BranchBot.new(@repo, @token).list_branches.sample
-    file = if maybe
-             # existing file
-             FileBot.new(@repo, @token).list_files(randombranch).sample[:path]
-           else
-             # create new file with random name
-             randword
-           end
+    file = pick_file(randombranch)
+    file = genword.to_s + extension if maybe
     CommitBot.new(@repo, randombranch, @token).commit(file, content, message)
     puts "📈 Created extreme swag on branch #{randombranch} in #{file}"
+  end
+
+  def pick_file(branch)
+    FileBot.new(@repo, @token).list_files(branch).sample[:path]
   end
 
   def maybe
@@ -34,5 +33,9 @@ class RandCommitter
 
   def gencontent
     RandomWord.nouns.next
+  end
+
+  def extension
+    ['.txt', '.md'].sample
   end
 end
