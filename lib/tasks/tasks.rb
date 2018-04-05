@@ -6,4 +6,4 @@ Dotenv.load('orgbot.env')
 r = ENV['REPO']
 t = ENV['TOKEN']
 
-RandCommitter.new(r, t).commit('swagging')
+RandCommitter.new(r, t).commit
