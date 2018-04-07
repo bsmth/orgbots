@@ -9,9 +9,9 @@ require_relative 'issues'
 require_relative 'files'
 require_relative 'reacter'
 
-Dotenv.load('orgbot.env')
-r = ENV['REPO']
-t = ENV['TOKEN']
+# Dotenv.load('orgbot.env')
+# r = ENV['REPO']
+# t = ENV['TOKEN']
 
 # puts FileBot.new(r, t).list_files('master').inspect
 # randombranch = BranchBot.new(r,t).list_branches.sample

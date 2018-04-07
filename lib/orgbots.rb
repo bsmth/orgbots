@@ -5,6 +5,8 @@ require 'octokit'
 require 'dotenv/load'
 require 'base64'
 
+puts Util.new.ratelimit
+
 # puts FileBot.new(r, t).list_files("master").inspect
 
 # randombranch = BranchBot.new(r,t).list_branches.sample

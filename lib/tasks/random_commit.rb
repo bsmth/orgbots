@@ -19,6 +19,11 @@ class RandCommitter
     puts "📈 Created extreme swag on branch #{randombranch} in #{file}"
   end
 
+  def shuffle_file(branch, file, content, message)
+    lines = Base64.decode64(content).lines.shuffle.flatten.join
+    CommitBot.new(@repo, branch, @token).commit(file, lines, message)
+  end
+
   def pick_file(branch)
     FileBot.new(@repo, @token).list_files(branch).sample[:path]
   end
