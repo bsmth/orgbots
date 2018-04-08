@@ -1,11 +1,12 @@
 require_relative 'orgbots/version'
 require_relative 'utils/utils'
 require_relative 'tasks/tasks'
+require_relative 'tasks/schedule'
 require 'octokit'
 require 'dotenv/load'
 require 'base64'
 
-puts Util.new.ratelimit
+# puts Util.new.ratelimit
 
 # puts FileBot.new(r, t).list_files("master").inspect
 
