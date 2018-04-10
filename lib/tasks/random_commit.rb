@@ -3,7 +3,7 @@ require 'octokit'
 require 'random-word'
 
 # Make a commit to a random branch etc.
-class RandCommitter
+class RandCommit
   def initialize(r, t)
     @c = Octokit::Client.new(access_token: t)
     @repo = r

@@ -9,7 +9,7 @@ Select how and when you would like to commit to GitHub:
 
 )
 
-Config.new.mode_select
+Config.new.mode_config
 
 # puts Util.new.ratelimit
 
