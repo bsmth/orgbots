@@ -11,6 +11,50 @@ class Config
     @t = ENV['TOKEN']
   end
 
+  def checklist
+    validate_token
+    validate_repo
+    puts 'Check if this looks correct before proceeding.'
+    confirm_configs
+  end
+
+  def validate_token
+    puts 'Validating Access Token...'
+    if @t.length == 40 && /[a-z0-9]/.match(@t)
+      @c = Octokit::Client.new(access_token: @t)
+      puts "✅  Access Token valid for user #{@c.user[:login]}\n"
+    else
+      puts "❌   Invalid GitHub Token\n\n" \
+           'Generate an access token at https://github.com/settings/tokens/new'
+      config_instructions
+      exit
+    end
+  end
+
+  # rubocop:disable Performance/RedundantMatch:
+  def validate_repo
+    puts 'Validating Repository...'
+    if %r{\w+\/\w+}.match(@r)
+      @c = Octokit::Client.new(access_token: @t)
+      puts "✅  Configured for commits in https://www.github.com/#{@r}\n\n"
+    else
+      puts "❌   Invalid Repo \n\n" +
+           config_instructions
+      exit
+    end
+  end
+  # rubocop:enable Performance/RedundantMatch:
+
+  def confirm_configs
+    exit unless @prompt.yes?('Ready to rock?')
+  end
+
+  def config_instructions
+    puts "\nPlace configs in orgbot.env in the format:"
+    puts 'OCTOKIT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    puts 'REPO=someuseraccount/coolrepo'
+  end
+
   def mode_select
     @mode = @prompt.select('Simulator Mode:') do |menu|
       menu.default 4

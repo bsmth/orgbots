@@ -4,7 +4,10 @@ require_relative 'tasks/tasks'
 require_relative 'tasks/schedule'
 require_relative 'config'
 
-puts %(Welcome to GitHub Simulator!
+Config.new.checklist
+
+system 'clear'
+puts %(🤖  Welcome to GitHub Simulator!
 Select how and when you would like to commit to GitHub:
 
 )
