@@ -1,11 +1,20 @@
 require_relative 'orgbots/version'
 require_relative 'utils/utils'
 require_relative 'tasks/tasks'
-require 'octokit'
-require 'dotenv/load'
-require 'base64'
+require_relative 'tasks/schedule'
+require_relative 'config'
 
-puts Util.new.ratelimit
+Config.new.checklist
+
+system 'clear'
+puts %(🤖  Welcome to GitHub Simulator!
+Select how and when you would like to commit to GitHub:
+
+)
+
+Config.new.mode_config
+
+# puts Util.new.ratelimit
 
 # puts FileBot.new(r, t).list_files("master").inspect
 
