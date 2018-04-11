@@ -2,18 +2,18 @@ sudo: false
 language: ruby
 rvm:
 - 2.3.0
-- 2.4.0
+- 2.3.3
 - 2.4.1
-- 2.5.0
 - 2.5.1
-os:
-  - linux
-  - osx
 before_install: gem install bundler
-# env:
+env:
+  global:
+    - CC_TEST_REPORTER_ID=780b9b8a174ce593e30d29c06b43e7b7373825f98e8140d4b8acf93818a89231
 #   matrix:
 #   - secure: U0/JntV2C3Chcoce1ZvTpbgh9yeaG06i6M6DuKG3R2mIt4+yywfei7Ia+9QVtYeMWkfRhU/JgvKa+UNP1k2VZHRA+uOJ3eqxfNGn9FyAnIZaYw+6bfy0RZG+lsPk1240sHC/6VWURsLX8bcIKeDBcgmEB0FzfGqRI7dIyGSUVzTHiSTYTI68i64dqpN2hMrcPzfAnU4kAGek/vBYUUnjtiPBk6nLdzhvkg5OakitirfU6TZwMjTiNaZMV4NDYorbIlMS29bJriIV9jkP0sj3tn0T3LK42AAfmQhaeXem4LGolRHJvDgFxIJq0JhA9Kzn4Wj+oMKqjMgorrsaKg/QZyyV0AtZaxoZB2tfuD/+FfgxUExiNIA0TChSdfXnN9UPwNVSxDQ8BUUsxS9Em2EAnywY9ChVAhKuO3YS7EcJc0QsA3MmPxQfxkMmK6b/JVutDR9D7JqcQ/579wdCSb55fCxpapCmKzvTOays6Hmg4sSqECMKPhD7PRpGCAQlic/bpjEHgBw29Jy29DobQTBk/p2edzBh71lj3WZDYQ9Duxrq4QoqQy7455TlZZZPSt0bmn9WW6nDXXXebTjQrws58QBglsYR5fp83BL8/dqflpYlW3Zqo54VOM3TFE5gHKlYUh0lLX4Ta9wt+nUfJhFgNCfU20wImDwg8JvEmSSXcSY=
 #   - secure: DLnzaQqvtjrG2b5VZ4M8IZhdGPNAPEb5BaO7iSlkV9HFp4us/KB7w2DVzE70U/a1eastll+kP5C+pBPkMGAYBbdVzAaB8qj3aAmuPvUoOs69b7RJftYsAJwO0c29lt/dz4rxLfKQluaVwTu/UM0NMyCVOePdF+pxSYxpOgkckGZhfknuzY1PP/QFEZKoo37FhG8gQGtzjItnIQ2C7zYH3lTkRrOgcpzq3HF0PAMtMercv/TTl8mB1sSXHr5EDfM5SWsc58Sh/p/BG9UQpLG/2J8f7IKfSgSa+T7j+ki1mog9PokFRRlS8I5l4MQa5GpxvNDM6yjo5oRpBVjGvOft8XwymG99SwUFCMKooydZ4RCc4nQFxjTtlc0g118pNnUmHmXKfCadMCExFqqbo3tllRIjUZm2qUnMuwCoAtPFSCRvbKjHk6Rlg6V0hBy8mLCFr5EaSAoW7wtKBlocfKs+uDKIyX+MFG7x4Q2etKxO8UTKWqCSJcweLw/1OnTqFPU9RA8YEzLZKsg+gEKa4MtCIV1hwer6qDWr/eWTW3H2SlHym+ifLFmYbR7maRLbZV8cg5AB2NuTMPPJD3BfVL2s8lVWo1VoxioV2BPA8o3owdfS+AvJW/uZof8RGeznTRx3i2xEFU+FNGj8tXl1TJvdr6HRVt/BI+UAq0Su9zk1E4o=
 script:
 - bundle exec rake test
 - bundle exec rake rubocop
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
