@@ -14,10 +14,8 @@ class Config
   end
 
   def validate_token
-    puts 'Validating Access Token...'
     if @t.length == 40 && /[a-z0-9]/.match(@t)
-      user = Query.new.user
-      puts "✅  Access Token valid for #{user}\n"
+      puts "✅  Access Token valid for #{Query.new.user}\n"
     else
       puts "❌   Invalid GitHub Token\n\n" \
            'Generate an access token at https://github.com/settings/tokens/new'
@@ -28,13 +26,11 @@ class Config
 
   # rubocop:disable Performance/RedundantMatch:
   def validate_repo
-    puts 'Validating Repository...'
     if %r{\w+\/\w+}.match(@r)
-      @c = Octokit::Client.new(access_token: @t)
       puts "✅  Configured for commits in https://www.github.com/#{@r}\n\n"
     else
       puts "❌   Invalid Repo \n\n" +
-           Reporter.new.configs
+      Reporter.new.configs
       exit
     end
   end
@@ -62,9 +58,9 @@ class Config
 
   def mode_config
     @result = case mode_select
-              when 1 then 'Mon-Fri' # select date to begin?
+              when 1 then 'Mon-Fri' # select date to begin and end
               when 2 then 'selected' # unclear
-              when 3 then 'random' # select date to begin
+              when 3 then 'random' # select begin and enf date
               when 4 then RandCommit.new(@r, @t).commit
               end
     # @input_date = ask_date
