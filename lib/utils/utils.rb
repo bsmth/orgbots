@@ -4,9 +4,12 @@ require_relative 'brancher'
 require_relative 'issues'
 require_relative 'files'
 require_relative 'reacter'
+require_relative 'queries'
+require_relative 'prompts'
+require_relative 'reports'
 require 'octokit'
 
-# Some utilities
+# Some basic utilities
 class Util
   def ratelimit
     rem = Octokit.rate_limit['remaining']

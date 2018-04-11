@@ -2,6 +2,7 @@ require 'octokit'
 require 'base64'
 
 # Creates an Orgbot, commits to a given branch
+# should be kept simple enough
 class CommitBot
   def initialize(r, b, t)
     @c = Octokit::Client.new(access_token: t)

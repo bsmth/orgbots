@@ -3,6 +3,7 @@ require_relative 'random_commit'
 require 'octokit'
 
 # Begs to differ
+# Probably deprecated by now
 class Differ
   def initialize(r, t)
     @c = Octokit::Client.new(access_token: t)

@@ -1,7 +1,9 @@
+require_relative 'utils/utils'
 require 'tty-prompt'
 require 'dotenv/load'
 
 Dotenv.load('orgbot.env')
+
 # Initialization config for setting up scheduling
 # this requires user input vua tty-prompt gem
 class Config
@@ -11,22 +13,15 @@ class Config
     @t = ENV['TOKEN']
   end
 
-  def checklist
-    validate_token
-    validate_repo
-    puts 'Check if this looks correct before proceeding.'
-    confirm_configs
-  end
-
   def validate_token
     puts 'Validating Access Token...'
     if @t.length == 40 && /[a-z0-9]/.match(@t)
-      @c = Octokit::Client.new(access_token: @t)
-      puts "✅  Access Token valid for user #{@c.user[:login]}\n"
+      user = Query.new.user
+      puts "✅  Access Token valid for #{user}\n"
     else
       puts "❌   Invalid GitHub Token\n\n" \
            'Generate an access token at https://github.com/settings/tokens/new'
-      config_instructions
+      Reporter.new.configs
       exit
     end
   end
@@ -39,20 +34,18 @@ class Config
       puts "✅  Configured for commits in https://www.github.com/#{@r}\n\n"
     else
       puts "❌   Invalid Repo \n\n" +
-           config_instructions
+           Reporter.new.configs
       exit
     end
   end
   # rubocop:enable Performance/RedundantMatch:
 
-  def confirm_configs
-    exit unless @prompt.yes?('Ready to rock?')
-  end
-
-  def config_instructions
-    puts "\nPlace configs in orgbot.env in the format:"
-    puts 'OCTOKIT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    puts 'REPO=someuseraccount/coolrepo'
+  def checklist
+    validate_token
+    validate_repo
+    puts 'Check the above GitHub Credentials point'\
+         'to the correct user and repo before proceeding.'
+    Prompter.new.confirm
   end
 
   def mode_select
@@ -76,9 +69,5 @@ class Config
               end
     # @input_date = ask_date
     @result
-  end
-
-  def ask_date
-    Time.parse(@prompt.ask('Enter a date:'))
   end
 end
