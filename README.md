@@ -1,6 +1,7 @@
 # Orgbots
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/e7869a167fd6a7547925/maintainability)](https://codeclimate.com/github/tcob/orgbots/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/e7869a167fd6a7547925/test_coverage)](https://codeclimate.com/github/tcob/orgbots/test_coverage)
 [![Build Status](https://travis-ci.org/tcob/orgbots.svg?branch=master)](https://travis-ci.org/tcob/orgbots)
 
 ## Install dependencies
