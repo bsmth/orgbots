@@ -1,9 +1,6 @@
 require 'bundler/gem_tasks'
-require 'rspec/core/rake_task'
 
-RSpec::Core::RakeTask.new(:spec)
-
-task default: :spec
+task default: :test
 
 task :run do
   ruby 'lib/orgbots.rb'
@@ -11,4 +8,8 @@ end
 
 task :rubocop do
   sh 'rubocop'
+end
+
+task :test do
+  ruby 'test/suite.rb'
 end
