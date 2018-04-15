@@ -1,10 +1,19 @@
 require_relative 'queries'
 require 'octokit'
 
+Dotenv.load('orgbot.env')
+
 # Simple Console Reporting or usage instructions
 class Reporter
+  def initialize
+    @prompt = TTY::Prompt.new
+    @c = Octokit::Client.new(access_token: @t)
+    @r = ENV['REPO']
+    @t = ENV['TOKEN']
+  end
+
   def welcome
-    puts Octokit.say("Sup #{Query.new.user}")
+    puts @c.say("Sup #{Query.new.user}")
     puts "\n🤖  Welcome to GitHub Simulator!"\
          'Select how and when you would like to commit to GitHub:'
   end
