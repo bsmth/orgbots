@@ -6,7 +6,7 @@ class TestReporter < Test::Unit::TestCase
   def test_welcome
     rep = Reporter.new
     assert_nothing_raised do
-       suppress_output { rep.welcome }
+      suppress_output { rep.welcome }
     end
   end
 end

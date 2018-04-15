@@ -8,7 +8,14 @@ class TestBranches < Test::Unit::TestCase
   def test_list_branches
     brancher = BranchBot.new(ENV['REPO'], ENV['TOKEN'])
     assert_nothing_raised do
-      brancher.list_branches
+      puts brancher.list_branches
+    end
+  end
+
+  def test_rand_branch
+    brancher = BranchBot.new(ENV['REPO'], ENV['TOKEN'])
+    assert_nothing_raised do
+      puts brancher.rand_branch
     end
   end
 end

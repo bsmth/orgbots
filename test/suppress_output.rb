@@ -1,3 +1,5 @@
+# rubocop:disable Metrics/MethodLength
+
 # Temporarily redirects STDOUT and STDERR to /dev/null
 # but does print exceptions should there occur any.
 # Call as:
@@ -10,7 +12,7 @@ def suppress_output
     $stderr.reopen(File.new('/dev/null', 'w'))
     $stdout.reopen(File.new('/dev/null', 'w'))
     retval = yield
-  rescue Exception => e
+  rescue StandardError => e
     $stdout.reopen(original_stdout)
     $stderr.reopen(original_stderr)
     raise e
@@ -20,3 +22,4 @@ def suppress_output
   end
   retval
 end
+# rubocop:enable Metrics/MethodLength
