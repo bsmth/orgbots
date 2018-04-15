@@ -13,15 +13,11 @@ class TaskManager
     @t = ENV['TOKEN']
   end
 
-  def rand_file_content
+  def shuffle_rand_file
+    @message = 'shufflin'
     @branch = BranchBot.new(@r, @t).list_branches.sample
     @file = FileBot.new(@r, @t).list_files(@branch).collect { |f| f[:path] }.sample
-    FileBot.new(@r, @t).get_contents(@file, @branch)[:content]
-  end
-
-  # Find a branch, find a file on that branch
-  def shuffle_file
-    @message = 'shufflin'
-    RandCommit.new(@r, @t).shuffle_file(@branch, @file, rand_file_content, @message)
+    @content = FileBot.new(@r, @t).get_contents(@file, @branch)[:content]
+    RandCommit.new(@r, @t).shuffle_file(@branch, @file, @content, @message)
   end
 end

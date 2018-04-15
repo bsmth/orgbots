@@ -4,12 +4,16 @@ require_relative 'tasks/tasks'
 require_relative 'tasks/schedule'
 require_relative 'config'
 
-# Run through the setup checklist before proceeding
-Config.new.checklist
+puts TaskManager.new.shuffle_file
 
-# Clear the screen and show a welcome message
-system 'clear'
-Reporter.new.welcome
+# Query.new.authed_ratelimit
 
-# Prompt the user to select which mode to run Orgbots in
-Config.new.mode_config
+# # Run through the setup checklist before proceeding
+# Config.new.checklist
+
+# # Clear the screen and show a welcome message
+# system 'clear'
+# Reporter.new.welcome
+
+# # Prompt the user to select which mode to run Orgbots in
+# Config.new.mode_config
