@@ -1,3 +1,4 @@
+require_relative 'test_helper'
 require_relative 'test_branches'
 require_relative 'test_config'
 require_relative 'test_dotenv'
