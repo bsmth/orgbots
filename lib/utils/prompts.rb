@@ -9,6 +9,7 @@ class Prompter
 
   def confirm
     exit unless @prompt.yes?('Ready to rock, Y/N?')
+    system 'clear'
   end
 
   def ask_date

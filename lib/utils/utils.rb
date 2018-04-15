@@ -6,7 +6,7 @@ require_relative 'files'
 require_relative 'reacter'
 require_relative 'queries'
 require_relative 'prompts'
-require_relative 'reports'
+require_relative 'reporter'
 require 'octokit'
 
 # Some basic utilities
