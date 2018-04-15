@@ -4,8 +4,6 @@ require_relative 'tasks/tasks'
 require_relative 'tasks/schedule'
 require_relative 'config'
 
-Query.new.authed_ratelimit
-
 # Run through the setup checklist before proceeding
 Config.new.checklist
 
