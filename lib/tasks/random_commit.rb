@@ -12,7 +12,7 @@ class RandCommit
 
   def commit
     content = genword
-    randombranch = BranchBot.new(@repo, @token).list_branches.sample
+    randombranch = BranchBot.new(@repo, @token).rand_branch
     file = pick_file(randombranch)
     file = genword.to_s + txt_ext if maybe
     CommitBot.new(@repo, randombranch, @token).commit(file, content, genword)

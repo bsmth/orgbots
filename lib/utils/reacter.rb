@@ -17,7 +17,7 @@ class ReactBot
   end
 
   def randemoji(multiple)
-    moji = Octokit.emojis.to_a.sample(multiple)
+    moji = @c.emojis.to_a.sample(multiple)
     str = ''
     moji.each { |a| str += ":#{a[0]}: " }
     str

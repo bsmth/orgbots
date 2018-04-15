@@ -5,6 +5,7 @@ class BranchBot
   def initialize(r, t)
     @c = Octokit::Client.new(access_token: t)
     @repo = r
+    @token = t
   end
 
   def list_branches
@@ -25,5 +26,9 @@ class BranchBot
   def delete_branch(branch)
     @c.delete_ref(@repo, 'heads/' + branch) if list_branches.include?(branch)
     puts "Deleting #{branch} from #{@repo}"
+  end
+
+  def rand_branch
+    BranchBot.new(@repo, @token).list_branches.sample.to_s
   end
 end

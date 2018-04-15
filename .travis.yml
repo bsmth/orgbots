@@ -6,6 +6,10 @@ rvm:
 - 2.4.1
 - 2.5.1
 before_install: gem install bundler
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 env:
   global:
     - CC_TEST_REPORTER_ID=780b9b8a174ce593e30d29c06b43e7b7373825f98e8140d4b8acf93818a89231

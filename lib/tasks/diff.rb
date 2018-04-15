@@ -12,10 +12,6 @@ class Differ
     @genword = RandCommit.new(r, t).genword
   end
 
-  def hooks
-    @c.hooks(@repo)
-  end
-
   def nice_commit
     content = @genword
     randombranch = BranchBot.new(@repo, @token).list_branches.sample

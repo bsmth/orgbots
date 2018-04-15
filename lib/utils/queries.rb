@@ -27,4 +27,8 @@ class Query
     @c = Octokit::Client.new(access_token: @t)
     @c.user[:login]
   end
+
+  def hooks
+    @c.hooks(@repo)
+  end
 end
