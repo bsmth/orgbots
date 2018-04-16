@@ -1,4 +1,5 @@
 require 'octokit'
+require_relative '../config'
 
 # Queries, opens and closes issues in a given repository
 class ReactBot
