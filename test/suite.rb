@@ -1,5 +1,6 @@
 require_relative 'test_helper'
 require_relative 'test_branches'
+require_relative 'test_committer'
 require_relative 'test_config'
 require_relative 'test_dotenv'
 require_relative 'test_issues'
