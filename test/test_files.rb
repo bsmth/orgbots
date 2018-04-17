@@ -33,16 +33,37 @@ class TestFiles < Test::Unit::TestCase
     end
   end
 
-  def test_create_update_delete_file
+  def test_create_file
     c = FileBot.new(ENV['REPO'], ENV['TOKEN'])
     assert_nothing_raised do
+      branch = 'master'
       path = 'testsuitefile.md'
       msg = 'from test suite'
       content = '2swag4u'
-      c.create_file(path, msg, content, 'master')
+      c.create_file(path, msg, content, branch)
+    end
+  end
+
+  def test_update_file
+    c = FileBot.new(ENV['REPO'], ENV['TOKEN'])
+    assert_nothing_raised do
+      branch = 'master'
+      path = 'testsuitefile.md'
+      msg = 'from test suite'
+      content = 'NEW CONTENT'
       sha = c.file_sha(path, 'master')
-      c.update_contents(path, msg, sha, 'updated content', 'master')
-      c.delete_file(path, msg, c.file_sha(path, 'master'), 'master')
+      c.update_contents(path, msg, sha, content, branch)
+    end
+  end
+
+  def test_delete_file
+    c = FileBot.new(ENV['REPO'], ENV['TOKEN'])
+    assert_nothing_raised do
+      branch = 'master'
+      path = 'testsuitefile.md'
+      msg = 'from test suite'
+      sha = c.file_sha(path, 'master')
+      c.delete_file(path, msg, sha, branch)
     end
   end
 
