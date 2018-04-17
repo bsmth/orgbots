@@ -8,6 +8,7 @@ require_relative 'queries'
 require_relative 'prompts'
 require_relative 'reporter'
 require 'octokit'
+require 'tty-spinner'
 
 # Some basic utilities
 class Util

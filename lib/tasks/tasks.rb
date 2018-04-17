@@ -1,6 +1,5 @@
 require_relative '../utils/utils'
 require_relative 'random_commit'
-require_relative 'diff'
 require 'octokit'
 
 Dotenv.load('orgbot.env')

@@ -20,8 +20,8 @@ class Reporter
   end
 
   def configs
-    puts 'Place configs in orgbot.env in the format:'\
-         'OCTOKIT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'\
+    puts "Place configs in /orgbot.env in the format: \n"\
+         "OCTOKIT_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"\
          'REPO=someuseraccount/coolrepo'
   end
 end

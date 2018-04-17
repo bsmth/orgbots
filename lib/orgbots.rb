@@ -1,11 +1,11 @@
 require_relative 'orgbots/version'
 require_relative 'utils/utils'
 require_relative 'tasks/tasks'
-require_relative 'tasks/schedule'
 require_relative 'config'
 
 # Run through the setup checklist before proceeding
 Config.new.checklist
+Prompter.new.confirm
 
 # Clear the screen and show a welcome message
 system 'clear'

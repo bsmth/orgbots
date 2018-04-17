@@ -1,8 +1,6 @@
 require 'test/unit'
 require_relative '../lib/config'
 
-Dotenv.load('orgbot.env')
-
 class TestCommit < Test::Unit::TestCase
   def test_repo
     bot = CommitBot.new(ENV['REPO'], 'master', ENV['TOKEN'])
