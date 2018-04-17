@@ -7,9 +7,9 @@ require_relative 'config'
 Config.new.checklist
 Prompter.new.confirm
 
-# # Clear the screen and show a welcome message
-# system 'clear'
-# Reporter.new.welcome
+# Clear the screen and show a welcome message
+system 'clear'
+Reporter.new.welcome
 
-# # Prompt the user to select which mode to run Orgbots in
-# Config.new.mode_config
+# Prompt the user to select which mode to run Orgbots in
+Config.new.mode_config
