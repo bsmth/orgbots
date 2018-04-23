@@ -13,14 +13,15 @@ class RandCommit
     @spinner = TTY::Spinner.new(format, success_mark: @pastel.green('+'))
   end
 
-  def commit
+  def commit_rand_branch
     @spinner.auto_spin
-    content = genword
-    randombranch = BranchBot.new(@repo, @token).rand_branch
-    file = pick_file(randombranch)
-    file = genword.to_s + txt_ext if maybe
-    CommitBot.new(@repo, randombranch, @token).commit(file, content, genword)
-    @spinner.success("📈 Created extreme swag on branch #{randombranch} in #{file}")
+    branch = BranchBot.new(@repo, @token).rand_branch
+    engage(branch, pick_file(branch), genword, genword)
+  end
+
+  def engage(branch, file, content, message)
+    CommitBot.new(@repo, branch, @token).commit(file, content, message)
+    @spinner.success("📈 Created extreme swag on branch #{branch} in #{file}")
   end
 
   def shuffle_file(branch, file, content, message)
@@ -32,6 +33,10 @@ class RandCommit
 
   def pick_file(branch)
     FileBot.new(@repo, @token).list_files(branch).sample[:path]
+  end
+
+  def gen_file
+    genword.to_s + txt_ext
   end
 
   def maybe

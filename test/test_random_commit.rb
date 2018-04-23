@@ -10,13 +10,19 @@ class TestRandCommit < Test::Unit::TestCase
     end
   end
 
-  # only add when cleanup step easily available
-  # def test_random_commit
-  #   rc = RandCommit.new(ENV['REPO'], ENV['TOKEN'])
-  #   assert_nothing_raised do
-  #     rc.commit
-  #   end
-  # end
+  def test_gen_filename
+    rc = RandCommit.new(ENV['REPO'], ENV['TOKEN'])
+    assert_nothing_raised do
+      rc.gen_file
+    end
+  end
+
+  def test_commit_to_random_branch
+    rc = RandCommit.new(ENV['REPO'], ENV['TOKEN'])
+    assert_nothing_raised do
+      rc.commit_rand_branch
+    end
+  end
 
   def test_gen_word_maybe
     rc = RandCommit.new(ENV['REPO'], ENV['TOKEN'])

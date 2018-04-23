@@ -13,6 +13,14 @@ class Prompter
   end
 
   def ask_date
-    Time.parse(@prompt.ask('Enter a date:'))
+    Time.parse(@prompt.ask('Enter a date (Y/M/D):'))
+  end
+
+  def ask_start_date
+    Time.parse(@prompt.ask('Enter a start date (Y/M/D):'))
+  end
+
+  def ask_end_date
+    Time.parse(@prompt.ask('Enter an end date (Y/M/D):'))
   end
 end

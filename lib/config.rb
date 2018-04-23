@@ -1,4 +1,5 @@
 require_relative 'utils/utils'
+require_relative 'tasks/tasks'
 require 'tty-prompt'
 require 'dotenv/load'
 require 'tty-spinner'
@@ -57,22 +58,24 @@ class Config
 
   def mode_select
     @mode = @prompt.select('Simulator Mode:') do |menu|
-      menu.default 4
+      menu.default 1
 
-      menu.choice name: 'Simulate Mon-Fri Schedule', value: 1, disabled: '(coming soon)'
-      menu.choice name: 'Commit on selected days', value: 2, disabled: '(coming soon)'
-      menu.choice name: 'Randomly 24/7', value: 3, disabled: '(coming soon)'
-      menu.choice name: 'Commit Once now', value: 4
+      # rubocop:disable Metrics/LineLength
+      menu.choice name: 'Commit Once now', value: 1
+      menu.choice name: 'Schedule a single 9-5 workday of commits', value: 2
+      menu.choice name: 'Simulate a 9to5, Mon-Fri Work Week', value: 3, disabled: '(coming soon)'
+      menu.choice name: 'Randomly commit 24/7 until an end date', value: 4, disabled: '(coming soon)'
+      # rubocop:enable Metrics/LineLength
     end
     @mode
   end
 
   def mode_config
     @result = case mode_select
-              when 1 then 'Mon-Fri' # select date to begin?
-              when 2 then 'selected' # unclear
-              when 3 then 'random' # select date to begin
-              when 4 then RandCommit.new(@r, @t).commit
+              when 1 then RandCommit.new(@r, @t).commit_rand_branch
+              when 2 then Schedule.new.sched_single_day
+              when 3 then puts 'do a thing'
+              when 4 then puts 'do a thing'
               end
     # @input_date = ask_date
     @result
