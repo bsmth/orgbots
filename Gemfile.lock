@@ -38,7 +38,7 @@ GEM
     powerpack (0.1.1)
     public_suffix (3.0.2)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     random-word (2.1.0)
     rubocop (0.55.0)
       parallel (~> 1.10)
@@ -91,7 +91,7 @@ DEPENDENCIES
   dotenv
   octokit (~> 4.0)
   orgbots!
-  rake (~> 10.0)
+  rake (~> 13.0)
   simplecov
   test-unit
 
